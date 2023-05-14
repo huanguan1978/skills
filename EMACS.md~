@@ -71,7 +71,7 @@ xb@="E:\\emacs28\\bin\\emacsclientw.exe  -n --alternate-editor=\"E:\\emacs28\\bi
 
 ```
 
-## 为Emacs让路，取消WINNT的AltTab全局窗口切换键(WinTab组合键同样可切换窗口),手工生成注册表文件WinAltTabCancel.reg，写入如下内容后保存且合并至注册表
+## 为Emacs让路，取消WINNT的AltTab全局窗口切换键(WinTab组合键同样可切换窗口),手工生成注册表文件EmacsExplorer.reg，写入如下内容后保存且合并至注册表
 ```
 Windows Registry Editor Version 5.00
 ;;AltTab SwitchWindow Cancel
@@ -102,7 +102,7 @@ Windows Registry Editor Version 5.00
  '(c-default-style "linux")      ;没有这个 { } 就会瞎搞
 
  '(package-selected-packages
-   '(yasnippet-snippets yasnippet yasnippet-classic-snippets web-mode php-mode markdown-mode))
+   '(yasnippet yasnippet-classic-snippets web-mode php-mode markdown-mode))
 
 '(php-mode-coding-style 'pear)  ;PHP代码风格
  '(php-mode-template-compatibility nil)  ;PHP模式关闭HTML模板兼容
@@ -112,7 +112,8 @@ Windows Registry Editor Version 5.00
 
 '(yas-global-mode t)                      ;开启全局yas模式
  '(yas-snippet-dirs
-   '("c:/Users/14714/AppData/Roaming/.emacs.d/snippets" yasnippet-classic-snippets-dir yasnippet-snippets-dir)))
+   '("c:/Users/14714/AppData/Roaming/.emacs.d/snippets" yasnippet-classic-snippets-dir )))
+
 (custom-set-faces
  )
 
