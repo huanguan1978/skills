@@ -1,5 +1,12 @@
 WINNT EMACS28.2手记
 
+## Emacs中文乱码，因Emacs默认编码与文档编码不同而出现乱码，多因Emacs下使用latin或utf8而文档是gb2312编码
+```lisp
+C-x <RET> r ( M-x revert-buffer-with-coding-system)
+```
+
+
+
 ## 将Emacs启动为一个SERVER，编辑~/.emacs写入如下代码
 ```lisp
 (server-start)

@@ -13,7 +13,7 @@ git clone https://github.com/huanguan1978/dbh.git
 ## 用Framework创建项目，若已有项目可略过
 例1：Thinkphp6创建tp6tst项目
 ```shell
-composer create-project thinkphp/think tp6tst --no-dev
+composer create-project topthink/think tp6tst --no-dev
 ``` 
 例2：Thinkphp5.1创建tp5tst项目
 ```shell
