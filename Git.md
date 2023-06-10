@@ -52,44 +52,53 @@
 - 将当前存储在另一分支的提交并入当前分支
 	`git merge branch`
 
+#### 代理配置
+```INI
+# .git/config
+[http]
+	proxy = socks5://127.0.0.1:7890
+[https]
+	proxy = socks5://127.0.0.1:7890
+```
+
 #### 个人项目GITFLOW实践步骤
 1. 在你的issue跟踪系统创建一个新的工单，并注明这个issue的编号
 	例：issue-1000015-中国时区差8小时
 2. 在你的本地仓库中，issue-number-description格式创健一个新的分支
 	例：从远程origin/video-sessons分支上创分建一个名为video-lession的新分支
-    `git checkout --track -b *video-lessons* *origin/video-sessons*`
-    例：创健一个新的开发分支
-    签出你希望作为起点使用的分支
-    `git checkout master`
-    创健一个新的分支
-    `git branch my-branch-name`
-    最后签出新分支
-    `git checkout my-branch-name`
-    
+	`git checkout --track -b *video-lessons* *origin/video-sessons*`
+	例：创健一个新的开发分支
+	签出你希望作为起点使用的分支
+	`git checkout master`
+	创健一个新的分支
+	`git branch my-branch-name`
+	最后签出新分支
+	`git checkout my-branch-name`
+
 3. 完成工单描述中的工作（且只完成工单描述中的工作）
 4. 测试你的工作，确保已完成且是正确的。且确保它能够通过开发环境下的QA测试
 5. 将你的修改添加到本地仓库的暂存库
 	例：添加扩展名为.php的所有文件
-    `git add *.php`
-    例：递归地添加指定路径中的所有文件
-    `git add <directory_name>/*`
-    
+	`git add *.php`
+	例：递归地添加指定路径中的所有文件
+	`git add <directory_name>/*`
+
 6. 将你的缓存的修改提交到仓库
 	例：提交暂存且加注解
-    `git commit -m mycomment`
+	`git commit -m mycomment`
 7. 将你的更改推送到备用服务器上，且在工单系统标记为已解决
 	例：使用push命令上传分支
-    `git push`
-    `git push --set-upstream origin my-branch-name`
-    
+	`git push`
+	`git push --set-upstream origin my-branch-name`
+
 8. 当你对你的工作完全满意时，将你的工单分支并入主分支，并将修改后的分支推送到代码托管系统中
 	列：将工单分支并入你的主分支
-    `git checkout master`
-    `git merge my-branch-name`
-    
+	`git checkout master`
+	`git merge my-branch-name`
+
 9. 再一次测试你的工作，确保没有后续问题
 10. 将你的工单标记为已关闭且清处无用的分支副本
 	例：删除一个无用的本地分支
-    `git branch --delete my-branch-name`
-    例：删除一个无用的远程分支
-    `git push --delete my_gitlab my-branch-name`
+	`git branch --delete my-branch-name`
+	例：删除一个无用的远程分支
+	`git push --delete my_gitlab my-branch-name`

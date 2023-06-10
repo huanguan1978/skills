@@ -1,8 +1,17 @@
 WINNT EMACS28.2手记
 
-## Emacs中文乱码，因Emacs默认编码与文档编码不同而出现乱码，多因Emacs下使用latin或utf8而文档是gb2312编码
+#### Emacs中文乱码，因Emacs默认编码与文档编码不同而出现乱码，多因Emacs下使用latin或utf8而文档是gb2312编码
 ```lisp
 C-x <RET> r ( M-x revert-buffer-with-coding-system)
+```
+#### 把当前文件转为utf-8编码
+```lisp
+C-x C-m f utf-8-unix <RET>
+```
+
+#### 另存当前文件转为utf-8编码（会提示当前文件编码）
+```lisp
+C-x C-m c <RET> C-x C-w <RET>
 ```
 
 
