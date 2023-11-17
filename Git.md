@@ -52,7 +52,26 @@
 - 将当前存储在另一分支的提交并入当前分支
 	`git merge branch`
 
-#### 代理配置
+#### 终端全局代理配置
+```shell
+$ git config --global http.proxy http://127.0.0.1:7890
+$ git config --global https.proxy socks5://127.0.0.1:7890
+# 若需取消全局配置
+# git config --global --unset http.proxy
+# git config --global --unset https.proxy
+```
+
+#### 终端全局用户名和邮箱配置
+```shell
+$ git config --global user.name crown.hg
+$ git config --global user.email crown.hg@gmail.com
+# 若需取消全局配置
+# git config --global --unset user.name
+# git config --global --unset user.email
+```
+
+
+#### 终端项目代理配置
 ```INI
 # .git/config
 [http]
