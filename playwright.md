@@ -1,5 +1,14 @@
 ### playwright 手记
 
+#### FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+```shell
+# export NODE_OPTIONS="--max-old-space-size=(X * 1024)" # Increase to X GB
+export NODE_OPTIONS="--max-old-space-size=5120" # Increase to 5 GB
+export NODE_OPTIONS="--max-old-space-size=6144" # Increase to 6 GB
+export NODE_OPTIONS="--max-old-space-size=7168" # Increase to 7 GB
+export NODE_OPTIONS="--max-old-space-size=8192" # Increase to 8 GB
+```
+
 #### 安装
 ```shell
 # 安装chromium浏览器
