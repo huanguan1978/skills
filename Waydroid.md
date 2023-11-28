@@ -1,7 +1,9 @@
-手工下载OTA安装waydroid
+![Waydroid Smart Dock](./images/waydroid-smartdock.png)
+
+### 手工下载OTA安装waydroid
 
 #### Fedora38 安装 waydroid
-```shell
+```sh
 sudo dnf install waydroid
 sudo systemctl enable --now waydroid-container
 # first-luanch, initialization
@@ -10,7 +12,7 @@ sudo systemctl enable --now waydroid-container
 ```
 
 #### 手工下载OTA安装Image
-```shell
+```sh
 cd ~/Downloads
 
 # https://github.com/waydroid/OTA/blob/master/system/lineage/waydroid_x86_64/VANILLA.json
@@ -28,29 +30,22 @@ waydroid first-launch
 ```
 
 #### 安装应用
-```shell
+```sh
 cd ~/Downloads
 waydroid app install F-Droid.apk
 ```
+
 #### 启用代理
-```shell
-# 系统代理环境变量设置
-export no_proxy=localhost,127.0.0.0/8,::1
-export http_proxy=http://127.0.0.1:7890/
-export https_proxy=https://127.0.0.1:7890/
-export all_proxy=socks://127.0.0.1:7891/
-
-# adb shell 设置proxy
-sudo waydroid shell settings put global http_proxy "192.168.100.200:7890"
-sudo waydroid shell settings put global https_proxy "192.168.100.200:7890"
-
-
+```sh
+# 设置代理
+sudo waydroid shell settings put global http_proxy "192.168.100.196:7890"
+sudo waydroid shell settings put global https_proxy "192.168.100.196:7890"
 # 重启当前会话
 waydroid session stop
 waydroid session start
 ```
 
-#### 不在Gnome显示Waydroid应用图标, waydroid.*.desktop中添加NoDisplay=true
+#### 禁显应用图标, waydroid.*.desktop中添加NoDisplay=true
 ```ini
 # ~/.local/share/applications/waydroid.*.desktop中添加NoDisplay=true
 [Desktop Entry]
@@ -66,24 +61,70 @@ Actions=app_settings;
 Name=App Settings
 Exec=waydroid app intent android.settings.APPLICATION_DETAILS_SETTINGS package:com.android.deskclock
 ```
+
 #### 修复安卓应用竖屏问题
-```shell
+```sh
 sudo waydroid shell wm set-fix-to-user-rotation enabled
 ```
-#### waydroid启动时开启竖屏
-```shell
-# vi /var/lib/waydroid/waydroid.cfg
-waydroid prop set persist.waydroid.width 1280
-waydroid prop set persist.waydroid.height 720
+
+#### 竖屏启机
+```sh
+# 重置到默认设置，以便全屏
+$ waydroid prop set persist.waydroid.width ""
+$ waydroid prop set persist.waydroid.height ""
+
+# 计算宽度，以竖屏 1366X768 16:9为例，width = 768/16*9 = 432
+$ waydroid prop set persist.waydroid.width 432
+
+＃ 重启
+$ waydroid session stop
+$ waydroid show-full-ui
 ```
 
-#### waydroid系统DPI设置,进入开发者模式,
+#### 安卓DPI信息
 - MDPI (Medium Dots per Inch):    Resolution: 160 DPI (Dots per Inch)    Image resolution: 1x baseline (mdpi)    Example image size: 48x48 pixels
 - HDPI (High Dots per Inch):    Resolution: 240 DPI (Dots per Inch)    Image resolution: 1.5x baseline (hdpi)    Example image size: 72x72 pixels
 - XHDPI (Extra High Dots per Inch):    Resolution: 320 DPI (Dots per Inch)    Image resolution: 2x baseline (xhdpi)    Example image size: 96x96 pixels
 - XXHDPI (Extra Extra High Dots per Inch):    Resolution: 480 DPI (Dots per Inch)    Image resolution: 3x baseline (xxhdpi)    Example image size: 144x144 pixels
+
+#### 开启安卓开发者模式，设置DPI
 1. Setting->About phone->Build number(dblclick)
-2. Setting->System->Advanced->Developer Options->DRAWING(SmallestWidth:480)
+2. Setting->System->Advanced->Developer Options->DRAWING(SmallestWidth:320)
+
+#### adb connect Waydroid
+```sh
+# 在Waydroid查看IpAddress, Setting->About phone->Ip Address
+$ adb connect 192.168.240.112:5555
+
+# 查看设备
+$ adb devices 
+```
+
+#### Waydroid管理APP
+```sh
+# 安装，app install
+waydroid app install app-release.apk
+# 运行, app launch
+waydroid app launch asvid.github.io.fridaapp
+# 删除, app remove
+waydroid app remove asvid.github.io.fridaapp
+```
+
+#### Smart Dock 快捷键
+- Modifier + L, 锁屏
+- Modifier + K, 截屏
+- Modifier + P, 设置
+- Modifier + W, 钉屏^[Inlines [安卓钉屏功能](https://support.google.com/android/answer/9455138?hl=zh-Hans&sjid=9320511781645990179-AP "安卓使用入门－固定和取消固定屏幕")
+]
+- Modifier + N, 通知
+- Modifier + M, 音乐
+- Modifier + B, 浏览器
+- Modifier + A, assistant app
+- Modifier + T, 终端
+- Modifier + R, 录屏
+- Ctrl(right),  返回（右Ctrl键即安卓返回）
+- F10, 切换屏幕
+
 
 
 #### Uiautomator2 连接 Waydroid
