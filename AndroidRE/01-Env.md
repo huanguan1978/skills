@@ -1,5 +1,29 @@
 01-安卓逆向工程手记-环境配置
 
+
+## Fedora38 JDK8安装
+
+### 官网注册并下载最新版jdk-8u391-linux-x64.rpm
+```shell
+# 安装后的路径在/usr/java/jdk1.8.0-x64/
+$ sudo rpm -ivh jdk-8u391-linux-x64.rpm
+```
+### 配置环境变量，可在/etc/profile（全局系统级生效）或~/.bashrc（单个帐户内生效）中增加如下内容
+```shell
+JAVA_HOME=/usr/java/jdk1.8.0-x64
+PATH=$JAVA_HOME/bin:$PATH
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JAVA_HOME
+export PATH
+export CLASSPATH
+```
+
+## Android Buildtools安装
+Buildtools包含实用工具 zipalign, apksigner等
+JDK8建议安装Android SDK Build-Tools 29，下载地址 https://androidsdkmanager.azurewebsites.net/Buildtools
+apktool下载地址 https://github.com/iBotPeaches/Apktool/releases
+
+
 ## apktool 常用功能
 
 ### apktool二次封包

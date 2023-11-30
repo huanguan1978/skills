@@ -114,7 +114,7 @@ waydroid app remove asvid.github.io.fridaapp
 - Modifier + L, 锁屏
 - Modifier + K, 截屏
 - Modifier + P, 设置
-- Modifier + W, 钉屏^[Inlines [安卓钉屏功能](https://support.google.com/android/answer/9455138?hl=zh-Hans&sjid=9320511781645990179-AP "安卓使用入门－固定和取消固定屏幕")
+- Modifier + W, 钉屏^[[安卓钉屏功能](https://support.google.com/android/answer/9455138?hl=zh-Hans&sjid=9320511781645990179-AP "安卓使用入门－固定和取消固定屏幕")
 ]
 - Modifier + N, 通知
 - Modifier + M, 音乐
