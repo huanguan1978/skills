@@ -132,4 +132,9 @@ Windows Registry Editor Version 5.00
 (custom-set-faces
  )
 
+;; (require 'lsp-mode)
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024))
+(add-hook 'dart-mode-hook 'lsp)
+
 ```
