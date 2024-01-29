@@ -29,6 +29,7 @@ mkdir arbs
 dart run intl_translation:extract_to_arb  --output-dir=arbs lib/localization.dart
 # 多个需要提取的文件
 # dart run intl_translation:extract_to_arb  --output-dir=arbs lib/f1.dart lib/f2.dart lib/f3.dart
+# dart run intl_translation:extract_to_arb  --output-dir=i18narb lib/localization.dart lib/localization2.dart
 ```
 
 #### 基于intl_messages.arb生成多语言文档
@@ -76,6 +77,7 @@ mkdir lib/l10n
 dart run intl_translation:generate_from_arb --output-dir=lib/i10n --no-use-deferred-loading lib/localization.dart i18narb/intl_*.arb
 # 多个需要提取的文件
 # dart run intl_translation:generate_from_arb --output-dir=lib/i10n --no-use-deferred-loading lib/f1.dart lib/f2.dart lib/f3.dart i18narb/intl_*.arb
+# dart run intl_translation:generate_from_arb --output-dir=lib/i10n --no-use-deferred-loading lib/localization.dart lib/localization2.dart i18narb/intl_*.arb
 ```
 
 #### 在项目中引入多语言系统
@@ -103,4 +105,18 @@ dart run main.dart
 # 输出结果
 # Hello world!
 # 你好 世界!
+```
+
+#### 在defaultLocale下临时挂载其他语言
+注：Intl.withLocale可临时挂载其他语言，但是需在initializeMessages之后才生效，若无initializeMessages时仅用message托底
+```dart
+	 appectLocale = 'zh_TW';
+     Intl.withLocale(
+      appectLocale,
+      () {
+        initializeMessages(appectLocale).then((intl) {
+          print(alocale1.greetingMessage('世界'));
+        });
+      },
+    );
 ```
